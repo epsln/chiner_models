@@ -4,6 +4,7 @@ import scipy.io.wavfile
 
 def getSpectro(song, M, audioData = []):
     #Get a sprectrogram out of a mp3
+    print(song)
     if audioData == []:
         audioData, sr = librosa.load(song, sr=None) 
         audioData = librosa.util.normalize(audioData)
