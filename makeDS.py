@@ -58,16 +58,16 @@ def main():
         os.makedirs(dsName + "/test/")
          
     #Finally create the dataset 
-    for i in range(numEx):
+    for i in range(min(numEx, len(musicFiles))):
         song = musicFiles[i]
         S = getSpectro(song, fftLength)
         if np.random.uniform(0, 1) > 0.8:
             print("Saving " + dsName + "/test/"+os.path.basename(song)[:-4]+".npy")
-            print("[",i + 1,"/", numEx, "]")
+            print("[",i + 1,"/",min(numEx, len(musicFiles)), "]")
             np.save(dsName + "/test/"+os.path.basename(song)[:-4]+".npy", S)
         else:
             print("Saving " + dsName + "/train/"+os.path.basename(song)[:-4]+".npy")
-            print("[",i + 1,"/", numEx, "]")
+            print("[",i + 1,"/",min(numEx, len(musicFiles)), "]")
             np.save(dsName + "/train/"+os.path.basename(song)[:-4]+".npy", S)
 
 if __name__ == "__main__":
